@@ -1,0 +1,24 @@
+{
+  "name": "tap-spec-reporter",
+  "version": "0.0.0",
+  "description": "Format TAP with indented sections to spec-like colored checks and exes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isaacs/tap-spec-reporter"
+  },
+  "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isaacs/tap-spec-reporter/issues"
+  },
+  "homepage": "https://github.com/isaacs/tap-spec-reporter",
+  "dependencies": {
+    "supports-color": "^1.3.1",
+    "tap-parser": "^1.0.4"
+  },
+  "bin": "index.js"
+}
