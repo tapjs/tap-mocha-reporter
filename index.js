@@ -6,6 +6,7 @@ var util = require('util')
 var reporters = require('./lib/reporters/index.js')
 var Writable = require('stream').Writable
 var Runner = require('./lib/runner.js')
+var Parser = require('tap-parser')
 
 util.inherits(Formatter, Writable)
 
@@ -13,6 +14,26 @@ function Formatter (type, options) {
   if (!reporters[type]) {
     console.error('Unknown format type: %s\n\n%s', type, avail())
     type = 'silent'
+  }
+
+  // don't actually need a reporter to report the tap we're getting
+  // just parse it so that we exit with the correct code, but otherwise
+  // dump it straight through to stdout.
+  if (type === 'tap') {
+    var p = new Parser()
+    this.write = function (chunk) {
+      process.stdout.write(chunk)
+      return p.write(chunk)
+    }
+    this.end = p.end.bind(p)
+    p.on('complete', function () {
+      if (!p.ok) {
+        process.nextTick(function () {
+          process.exit(1)
+        })
+      }
+    })
+    return this
   }
 
   var runner = this.runner = new Runner(options)
