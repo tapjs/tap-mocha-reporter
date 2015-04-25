@@ -7,6 +7,7 @@ var reporters = require('./lib/reporters/index.js')
 var Writable = require('stream').Writable
 var Runner = require('./lib/runner.js')
 var Parser = require('tap-parser')
+require('exit-code')
 
 util.inherits(Formatter, Writable)
 
@@ -27,11 +28,8 @@ function Formatter (type, options) {
     }
     this.end = p.end.bind(p)
     p.on('complete', function () {
-      if (!p.ok) {
-        process.nextTick(function () {
-          process.exit(1)
-        })
-      }
+      if (!p.ok)
+        process.exitCode = 1
     })
     return this
   }
@@ -41,10 +39,8 @@ function Formatter (type, options) {
   Writable.call(this, options)
 
   runner.on('end', function () {
-    process.nextTick(function () {
-      if (!runner.parser.ok)
-        process.exit(1)
-    })
+    if (!runner.parser.ok)
+      process.exitCode = 1
   })
 }
 
