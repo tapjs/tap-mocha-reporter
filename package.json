@@ -1,7 +1,7 @@
 {
   "name": "tap-spec-reporter",
   "version": "0.0.0",
-  "description": "Format TAP with indented sections to spec-like colored checks and exes.",
+  "description": "Format a TAP stream using Mocha's set of reporters",
   "main": "index.js",
   "scripts": {
     "test": "tap test/*.js"
