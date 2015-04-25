@@ -24,5 +24,4 @@ var TSR = require('tap-mocha-reporter')
 
 fs.createReadStream('saved-test-output.tap')
   .pipe(TSR('dot'))
-  .pipe(process.stdout)
 ```
