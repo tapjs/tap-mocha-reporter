@@ -37,7 +37,7 @@ function Formatter (type, options) {
   }
 
   var runner = this.runner = new Runner(options)
-  this.reporter = new reporters[type](this.runner)
+  this.reporter = new reporters[type](this.runner, {})
   Writable.call(this, options)
 
   runner.on('end', function () {
