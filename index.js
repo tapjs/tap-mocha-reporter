@@ -4,6 +4,7 @@ module.exports = Formatter
 
 var util = require('util')
 var reporters = require('./lib/reporters/index.js')
+Formatter.types = Object.keys(reporters).sort()
 var Writable = require('stream').Writable
 var Runner = require('./lib/runner.js')
 var Parser = require('tap-parser')
@@ -53,7 +54,7 @@ Formatter.prototype.end = function () {
 }
 
 function avail () {
-  var types = Object.keys(reporters).sort().reduce(function (str, t) {
+  var types = Formatter.types.reduce(function (str, t) {
     var ll = str.split('\n').pop().length + t.length
     if (ll < 40)
       return str + ' ' + t
