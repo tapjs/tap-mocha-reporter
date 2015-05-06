@@ -29,5 +29,8 @@
   "devDependencies": {
     "tap": "^1.0.0-beta"
   },
-  "bin": "index.js"
+  "bin": "index.js",
+  "optionalDependencies": {
+    "readable-stream": "^1.1.13"
+  }
 }
