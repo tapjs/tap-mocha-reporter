@@ -22,7 +22,7 @@
     "escape-string-regexp": "^1.0.3",
     "exit-code": "^1.0.1",
     "glob": "^5.0.5",
-    "js-yaml": "isaacs/js-yaml",
+    "js-yaml": "^3.3.1",
     "supports-color": "^1.3.1",
     "tap-parser": "^1.0.4"
   },
