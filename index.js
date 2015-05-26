@@ -17,10 +17,10 @@ if (!Writable) {
 
 var Runner = require('./lib/runner.js')
 var Parser = require('tap-parser')
-require('exit-code')
 
 util.inherits(Formatter, Writable)
 
+var exitCode
 function Formatter (type, options) {
   if (!reporters[type]) {
     console.error('Unknown format type: %s\n\n%s', type, avail())
@@ -39,7 +39,7 @@ function Formatter (type, options) {
     this.end = p.end.bind(p)
     p.on('complete', function () {
       if (!p.ok)
-        process.exitCode = 1
+        exitCode = 1
     })
     return this
   }
@@ -50,9 +50,14 @@ function Formatter (type, options) {
 
   runner.on('end', function () {
     if (!runner.parser.ok)
-      process.exitCode = 1
+      exitCode = 1
   })
 }
+
+process.on('exit', function (code) {
+  if (!code && exitCode)
+    process.exit(exitCode)
+})
 
 Formatter.prototype.write = function () {
   return this.runner.write.apply(this.runner, arguments)
