@@ -27,6 +27,8 @@ function Formatter (type, options) {
     type = 'silent'
   }
 
+  this.writable = true
+
   // don't actually need a reporter to report the tap we're getting
   // just parse it so that we exit with the correct code, but otherwise
   // dump it straight through to stdout.
