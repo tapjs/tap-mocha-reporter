@@ -22,6 +22,9 @@ util.inherits(Formatter, Writable)
 
 var exitCode
 function Formatter (type, options) {
+  if (!(this instanceof Formatter)) {
+    return new Formatter(type, options)
+  }
   if (!reporters[type]) {
     console.error('Unknown format type: %s\n\n%s', type, avail())
     type = 'silent'
