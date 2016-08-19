@@ -31,6 +31,6 @@
   },
   "bin": "index.js",
   "optionalDependencies": {
-    "readable-stream": "^1.1.13"
+    "readable-stream": "^2.1.5"
   }
 }
