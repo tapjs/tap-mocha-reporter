@@ -24,7 +24,7 @@
     "glob": "^7.0.5",
     "js-yaml": "^3.3.1",
     "tap-parser": "^2.0.0",
-    "unicode-length": "^1.0.0"
+    "unicode-length": "^1.0.3"
   },
   "devDependencies": {
     "tap": "^6.2.0"
