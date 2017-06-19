@@ -1,0 +1,24 @@
+TAP version 13
+    # Subtest: test/error.js
+    1..0
+not ok 1 - test/error.js # time=155.087ms
+  ---
+  timeout: 30000
+  file: test/error.js
+  results:
+    ok: false
+    count: 0
+    pass: 0
+    plan:
+      start: 1
+      end: 0
+      skipAll: true
+  exitCode: 1
+  command: /Users/aaron.madsen/.node/bin/node
+  arguments:
+    - test/error.js
+  ...
+
+1..1
+# failed 1 of 1 tests
+# time=169.786ms
