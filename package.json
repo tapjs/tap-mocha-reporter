@@ -27,7 +27,7 @@
     "unicode-length": "^1.0.0"
   },
   "devDependencies": {
-    "tap": "^6.2.0"
+    "tap": "^6.3.1"
   },
   "bin": "index.js",
   "optionalDependencies": {
