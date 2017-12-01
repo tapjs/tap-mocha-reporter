@@ -26,8 +26,13 @@ function Formatter (type, options) {
     return new Formatter(type, options)
   }
   if (!reporters[type]) {
-    console.error('Unknown format type: %s\n\n%s', type, avail())
-    type = 'silent'
+    try {
+      //Attempt to load 3rd party formatter.
+      reporters[type] = require(type)
+    } catch (e) {
+      console.error('Unknown format type: %s\n\n%s', type, avail())
+      type = 'silent'
+    }
   }
 
   this.writable = true
