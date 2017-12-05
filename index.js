@@ -3,6 +3,8 @@
 module.exports = Formatter
 
 var util = require('util')
+var assert = require('assert')
+var AssertionError = assert.AssertionError
 var reporters = require('./lib/reporters/index.js')
 Formatter.types = Object.keys(reporters).sort()
 var Writable = require('stream').Writable
@@ -29,8 +31,13 @@ function Formatter (type, options) {
     try {
       //Attempt to load 3rd party formatter.
       reporters[type] = require(type)
+      assert(reporters[type] instanceof Function, 'Reporter ' + type + ' was not a function.')
     } catch (e) {
-      console.error('Unknown format type: %s\n\n%s', type, avail())
+      if (e instanceof AssertionError) {
+        console.error('Failed to load ' + type + ': ' + e.message)
+      } else {
+        console.error('Unknown format type: %s\n\n%s', type, avail())
+      }
       type = 'silent'
     }
   }
