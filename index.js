@@ -50,12 +50,16 @@ function Formatter (type, options) {
   }
 
   var runner = this.runner = new Runner(options)
-  this.reporter = new reporters[type](this.runner, {})
+  var reporter = this.reporter = new reporters[type](this.runner, {})
   Writable.call(this, options)
 
   runner.on('end', function () {
     if (!runner.parser.ok)
       exitCode = 1
+
+    if (reporter.done) {
+      reporter.done(runner.stats.failures, process.exit)
+    }
   })
 }
 
