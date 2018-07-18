@@ -25,9 +25,16 @@ function Formatter (type, options) {
   if (!(this instanceof Formatter)) {
     return new Formatter(type, options)
   }
-  if (!reporters[type]) {
-    console.error('Unknown format type: %s\n\n%s', type, avail())
-    type = 'silent'
+
+  let reporter = reporters[type];
+
+  if (!reporter) {
+    try {
+      reporter = require(type);
+    } catch (_) {
+        console.error('Unknown format type: %s\n\n%s', type, avail())
+        type = 'silent'
+    }
   }
 
   this.writable = true
@@ -50,7 +57,7 @@ function Formatter (type, options) {
   }
 
   var runner = this.runner = new Runner(options)
-  this.reporter = new reporters[type](this.runner, {})
+  this.reporter = new reporter(this.runner, {})
   Writable.call(this, options)
 
   runner.on('end', function () {

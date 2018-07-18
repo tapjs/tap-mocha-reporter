@@ -17,6 +17,13 @@ is `spec`.
 tap test/*.js | tap-mocha-reporter nyan
 ```
 
+It also supports custom reporters (npm packages).
+
+```bash
+npm install -D mochawesome
+tap test/*.js | tap-mocha-reporter mochawesome
+```
+
 Programmatically, you can use this as a transform stream.
 
 ```javascript
