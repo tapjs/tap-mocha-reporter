@@ -21,21 +21,18 @@
   "homepage": "https://github.com/isaacs/tap-mocha-reporter",
   "dependencies": {
     "color-support": "^1.1.0",
-    "debug": "^2.1.3",
-    "diff": "^1.3.2",
-    "escape-string-regexp": "^1.0.3",
+    "debug": "^4.1.1",
+    "diff": "^4.0.1",
+    "escape-string-regexp": "^2.0.0",
     "glob": "^7.0.5",
     "tap-parser": "^10.0.0",
     "tap-yaml": "^1.0.0",
-    "unicode-length": "^1.0.0"
+    "unicode-length": "^2.0.2"
   },
   "devDependencies": {
-    "tap": "^12.7.0"
+    "tap": "^14.10.2"
   },
   "bin": "index.js",
-  "optionalDependencies": {
-    "readable-stream": "^2.1.5"
-  },
   "files": [
     "index.js",
     "lib"
