@@ -6,14 +6,6 @@ var util = require('util')
 var reporters = require('./lib/reporters/index.js')
 Formatter.types = Object.keys(reporters).sort()
 var Writable = require('stream').Writable
-if (!Writable) {
-  try {
-    Writable = require('readable-stream').Writable
-  } catch (er) {
-    throw new Error('Please install "readable-stream" to use this module ' +
-                    'with Node.js v0.8 and before')
-  }
-}
 
 var Runner = require('./lib/runner.js')
 var Parser = require('tap-parser')
