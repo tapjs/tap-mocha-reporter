@@ -1,0 +1,92 @@
+TAP version 13
+ok 1 - test/test1.js # time=60.259ms {
+    # Subtest: this
+        # Subtest: is
+            ok 1 - a
+            ok 2 - expect truthy value
+            1..2
+        ok 1 - is # time=3.005ms
+
+        # Subtest: this
+            ok 1 - is
+            1..1
+        ok 2 - this # time=0.979ms
+
+        1..2
+    ok 1 - this # time=20.308ms
+
+    # Subtest: only
+        # Subtest: a
+            ok 1 - test
+            1..1
+        ok 1 - a # time=0.946ms
+
+        1..1
+    ok 2 - only # time=7.304ms
+
+    1..2
+    # time=60.259ms
+}
+
+not ok 2 - test/test2.js # time=66.157ms
+  ---
+  env: {}
+  file: test/test2.js
+  timeout: 30000
+  command: /usr/bin/node
+  args:
+    - -r
+    - /root/.config/yarn/global/node_modules/esm/esm.js
+    - test/test2.js
+  stdio:
+    - 0
+    - pipe
+    - 2
+  cwd: /opt/tap-mocha-reporter
+  exitCode: 1
+  ...
+{
+    # Subtest: and
+        # Subtest: failed
+            not ok 1 - this is an error
+              ---
+              at:
+                line: 4
+                column: 9
+                file: test/test2.js
+                type: Test
+              stack: >
+                Test.<anonymous> (test/test2.js:4:9)
+
+                Test.<anonymous> (test/test2.js:3:7)
+
+                Object.<anonymous> (test/test2.js:2:5)
+              source: |2
+                  tap.test('failed', tap => {
+                    tap.fail('this is an error')
+                --------^
+                    tap.end()
+                  })
+              ...
+
+            1..1
+            # failed 1 test
+        not ok 1 - failed # time=28.62ms
+
+        1..1
+        # failed 1 test
+    not ok 1 - and # time=39.226ms
+
+    1..1
+    # failed 1 test
+    # time=66.157ms
+}
+
+1..2
+# failed 1 of 2 tests
+# time=1512.375ms
+----------|----------|----------|----------|----------|-------------------|
+File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+----------|----------|----------|----------|----------|-------------------|
+All files |        0 |        0 |        0 |        0 |                   |
+----------|----------|----------|----------|----------|-------------------|
