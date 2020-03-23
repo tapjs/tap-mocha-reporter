@@ -1,0 +1,151 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 4,
+    "passes": 1,
+    "pending": 1,
+    "failures": 1,
+    "start": "<START>",
+    "end": "<END>",
+    "duration": "<DURATION>",
+    "testsRegistered": 4,
+    "passPercent": 25,
+    "pendingPercent": 25,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "<UUID-0>",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "<UUID-1>",
+          "title": "",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "create a thing",
+              "fullTitle": "create a thing",
+              "timedOut": false,
+              "duration": null,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "<UUID-2>",
+              "parentUUID": "<UUID-1>",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "delete a thing",
+              "fullTitle": "delete a thing",
+              "timedOut": false,
+              "duration": null,
+              "state": "failed",
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "delete a thing"
+              },
+              "uuid": "<UUID-3>",
+              "parentUUID": "<UUID-1>",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "todo me",
+              "fullTitle": "todo me",
+              "timedOut": false,
+              "duration": null,
+              "state": "failed",
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "<UUID-4>",
+              "parentUUID": "<UUID-1>",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "skip me",
+              "fullTitle": "skip me",
+              "timedOut": false,
+              "duration": null,
+              "state": "passed",
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "<UUID-5>",
+              "parentUUID": "<UUID-1>",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.1.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "5.0.0"
+    },
+    "marge": {
+      "options": {},
+      "version": "4.1.0"
+    }
+  }
+}
