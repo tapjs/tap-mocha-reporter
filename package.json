@@ -30,7 +30,7 @@
     "unicode-length": "^2.0.2"
   },
   "devDependencies": {
-    "tap": "^14.10.2"
+    "tap": "^15.1.6"
   },
   "bin": "index.js",
   "files": [
