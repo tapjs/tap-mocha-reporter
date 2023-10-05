@@ -17,7 +17,15 @@ function Formatter (type, options) {
   if (!(this instanceof Formatter)) {
     return new Formatter(type, options)
   }
-  if (!reporters[type]) {
+  var _reporter = reporters[type];
+  if (!_reporter) {
+    try {
+      _reporter = require(type);
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+  if (!_reporter) {
     console.error('Unknown format type: %s\n\n%s', type, avail())
     type = 'silent'
   }
@@ -42,12 +50,16 @@ function Formatter (type, options) {
   }
 
   var runner = this.runner = new Runner(options)
-  this.reporter = new reporters[type](this.runner, {})
+  var reporter = this.reporter = new _reporter(this.runner, {})
   Writable.call(this, options)
 
   runner.on('end', function () {
     if (!runner.parser.ok)
       exitCode = 1
+
+    if (reporter.done) {
+      reporter.done(runner.stats.failures, process.exit)
+    }
   })
 }
 
