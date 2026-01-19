@@ -13,9 +13,9 @@ var Parser = require('tap-parser')
 util.inherits(Formatter, Writable)
 
 var exitCode
-function Formatter (type, options) {
+function Formatter (type, runnerOptions, options) {
   if (!(this instanceof Formatter)) {
-    return new Formatter(type, options)
+    return new Formatter(type, runnerOptions, options)
   }
   if (!reporters[type]) {
     console.error('Unknown format type: %s\n\n%s', type, avail())
@@ -41,9 +41,12 @@ function Formatter (type, options) {
     return this
   }
 
-  var runner = this.runner = new Runner(options)
-  this.reporter = new reporters[type](this.runner, {})
-  Writable.call(this, options)
+  var runner = this.runner = new Runner(runnerOptions)
+  this.reporter = new reporters[type](
+    this.runner,
+    (options || {}).reporter || {},
+  )
+  Writable.call(this, runnerOptions)
 
   runner.on('end', function () {
     if (!runner.parser.ok)
