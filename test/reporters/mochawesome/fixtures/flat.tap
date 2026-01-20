@@ -1,0 +1,15 @@
+TAP version 13
+# create a thing
+ok 1 - create a thing
+# delete a thing
+not ok 2 - delete a thing
+not ok 3 - todo me # TODO
+ok 4 - skip me # SKIP
+
+1..4
+# tests 4
+# pass 1
+# fail 1
+# todo 1
+# skip 1
+
